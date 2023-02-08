@@ -1,0 +1,10 @@
+{
+  "devDependencies": {
+    "@tsconfig/node-lts-strictest": "^18.12.1",
+    "@types/node": "^18.13.0",
+    "ts-node": "^10.9.1",
+    "tsconfig-paths": "^4.1.2",
+    "tslib": "^2.5.0",
+    "typescript": "^4.9.5"
+  }
+}
