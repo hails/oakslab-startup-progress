@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "nodemon src/index.ts"
+    "start-dev": "nodemon src/index.ts"
   },
   "devDependencies": {
     "@tsconfig/node-lts-strictest": "^18.12.1",
