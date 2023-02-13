@@ -10,7 +10,7 @@ export class TaskService {
   }
 
   create (task: Task) {
-    if (this.state.phases[task.phaseId] === undefined) {
+    if (this.state.phases.at(task.phaseId) === undefined) {
       throw new Error('Phase not found', { cause: { code: 'TASK_NOT_FOUND', phaseId: task.phaseId } })
     }
 
@@ -35,7 +35,7 @@ export class TaskService {
     this.state.tasks.at(id)!.status = TaskStatus.COMPLETED
 
     if (this.otherTasksSamePhaseAreCompleted(task)) {
-      this.state.phases[task.phaseId]!.status = PhaseStatus.COMPLETED
+      this.state.phases.at(task.phaseId)!.status = PhaseStatus.COMPLETED
     }
 
     return true
