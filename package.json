@@ -1,10 +1,10 @@
 {
   "scripts": {
     "start-dev": "nodemon src/index.ts",
+    "start": "node -r ts-node/register ./src/index.ts",
     "test": "ava"
   },
   "devDependencies": {
-    "@tsconfig/node-lts-strictest": "^18.12.1",
     "@types/node": "^18.13.0",
     "@types/supertest": "^2.0.12",
     "@typescript-eslint/eslint-plugin": "^5.51.0",
@@ -17,12 +17,13 @@
     "nodemon": "^2.0.20",
     "pino-pretty": "^9.1.1",
     "supertest": "^6.3.3",
-    "ts-node": "^10.9.1",
-    "tsconfig-paths": "^4.1.2",
     "tslib": "^2.5.0",
     "typescript": "^4.9.5"
   },
   "dependencies": {
+    "@tsconfig/node-lts-strictest": "^18.12.1",
+    "ts-node": "^10.9.1",
+    "tsconfig-paths": "^4.1.2",
     "fastify": "^4.12.0",
     "graphql": "^16.6.0",
     "mercurius": "^12.0.0",
