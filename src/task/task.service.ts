@@ -29,7 +29,7 @@ export class TaskService {
     }
 
     if (!this.tasksPreviousPhaseAreCompleted(task.phaseId)) {
-      throw new Error('Tasks cannot be marked as completed unless all tasks in the previous phase are completed', { cause: { code: 'TASK_NOT_FOUND', taskId: id } })
+      throw new Error('Tasks cannot be marked as completed unless all tasks in the previous phase are completed', { cause: { code: 'PREVIOUS_PHASE_NOT_COMPLETED', taskId: id } })
     }
 
     this.state.tasks.at(id)!.status = TaskStatus.COMPLETED

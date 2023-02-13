@@ -56,7 +56,7 @@ export const state: {
     },
     {
       phaseId: 2,
-      title: 'Release mkarting website',
+      title: 'Release marketing website',
       status: TaskStatus.OPEN
     },
     {
