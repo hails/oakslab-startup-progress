@@ -3,16 +3,22 @@ import { buildFastify } from './app'
 
 const start = async () => {
   try {
-    const app = await buildFastify({
+    const logger = process.env['NODE_ENV'] === 'production'
+      ? true
       // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
-      logger: {
-        transport: {
-          target: 'pino-pretty'
-        }
-      } as PinoLoggerOptions
+      : {
+          transport: {
+            target: 'pino-pretty'
+          }
+        } as PinoLoggerOptions
+
+    const app = await buildFastify({
+      logger
     })
 
-    await app.listen({ port: 3000 })
+    const port = process.env['PORT'] ?? 3000
+
+    await app.listen({ host: '0.0.0.0', port: port as number })
   } catch (err) {
     console.error(err)
     process.exit(1)
