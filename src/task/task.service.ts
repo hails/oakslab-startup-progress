@@ -11,7 +11,7 @@ export class TaskService {
 
   create (task: Task) {
     if (this.state.phases.at(task.phaseId) === undefined) {
-      throw new Error('Phase not found', { cause: { code: 'TASK_NOT_FOUND', phaseId: task.phaseId } })
+      throw new Error('Phase not found', { cause: { code: 'PHASE_NOT_FOUND', phaseId: task.phaseId } })
     }
 
     const id = this.state.tasks.push({ ...task, status: TaskStatus.OPEN }) - 1
@@ -25,7 +25,7 @@ export class TaskService {
   markAsCompleted (id: number) {
     const task = this.state.tasks.at(id)
     if (task === null || task === undefined) {
-      throw new Error('Task not found')
+      throw new Error('Task not found', { cause: { code: 'TASK_NOT_FOUND', taskId: id } })
     }
 
     if (!this.tasksPreviousPhaseAreCompleted(task.phaseId)) {
