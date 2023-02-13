@@ -1,6 +1,6 @@
 import { paginate, type PaginationInput } from '~/pagination'
 import type { Phase } from '~/phase/phase.model'
-import { state } from '../index'
+import { state } from '~/app'
 import type { Task } from './task.model'
 import { TaskService } from './task.service'
 
