@@ -17,7 +17,8 @@ const start = async () => {
     })
 
     const port = process.env['PORT'] ?? 3000
-    await app.listen({ port: port as number })
+
+    await app.listen({ host: '0.0.0.0', port: port as number })
   } catch (err) {
     console.error(err)
     process.exit(1)
