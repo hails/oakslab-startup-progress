@@ -1,5 +1,5 @@
 import { createPhase, resolvePhases } from '~/phase/phase.resolver'
-import { createTask, markTaskAsCompleted, resolvePhaseTasks, resolveTasks } from '~/task/task.resolver'
+import { createTask, markTaskAsCompleted, markTaskAsOpen, resolvePhaseTasks, resolveTasks } from '~/task/task.resolver'
 
 const schema = `
   enum TaskStatus {
@@ -49,6 +49,7 @@ const schema = `
     createPhase(phase: PhaseInput!): Phase
     createTask(task: TaskInput!): Task
     markTaskAsCompleted(taskId: Int!): Boolean
+    markTaskAsOpen(taskId: Int!): Boolean
   }
 `
 
@@ -64,7 +65,8 @@ const resolvers = {
   Mutation: {
     createPhase,
     createTask,
-    markTaskAsCompleted
+    markTaskAsCompleted,
+    markTaskAsOpen
   }
 }
 
