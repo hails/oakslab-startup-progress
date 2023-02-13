@@ -56,3 +56,21 @@ test('#markAsCompleted - throws an error when the previous phase are not complet
   const error = t.throws(() => taskService.markAsCompleted(6))
   t.deepEqual(error?.cause, { code: 'PREVIOUS_PHASE_NOT_COMPLETED', taskId: 6 })
 })
+
+test('#markAsOpen', async (t) => {
+  const state = getInitialApplicationState()
+  const taskService = new TaskService(state)
+
+  taskService.markAsOpen(4)
+
+  t.is(state.tasks[4]!.status, TaskStatus.OPEN)
+})
+
+test('#markAsOpen - set phase as open', async (t) => {
+  const state = getInitialApplicationState()
+  const taskService = new TaskService(state)
+
+  taskService.markAsOpen(0)
+
+  t.is(state.phases[0]!.status, PhaseStatus.OPEN)
+})
