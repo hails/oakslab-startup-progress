@@ -17,6 +17,12 @@ const MARK_TASK_AS_COMPLETED_MUTATION = `
   }
 `
 
+const MARK_TASK_AS_OPEN_MUTATION = `
+  mutation MarkTaskAsOpen($taskId: Int!) {
+    markTaskAsOpen(taskId: $taskId)
+  }
+`
+
 test('createPhase', async (t) => {
   const fastify = await buildFastify()
   t.teardown(async () => { await fastify.close() })
@@ -48,6 +54,23 @@ test('markTaskAsCompleted', async (t) => {
   const response = await supertest(fastify.server)
     .post('/graphql')
     .send({ query: MARK_TASK_AS_COMPLETED_MUTATION, variables })
+    .expect(200)
+
+  t.snapshot(response.body)
+})
+
+test('markTaskAsOpen', async (t) => {
+  const fastify = await buildFastify()
+  t.teardown(async () => { await fastify.close() })
+  await fastify.ready()
+
+  const variables = {
+    taskId: 0
+  }
+
+  const response = await supertest(fastify.server)
+    .post('/graphql')
+    .send({ query: MARK_TASK_AS_OPEN_MUTATION, variables })
     .expect(200)
 
   t.snapshot(response.body)
