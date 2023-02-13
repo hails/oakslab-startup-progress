@@ -28,7 +28,7 @@ test('#create - throws an error when phaseId does not exist', async (t) => {
   }
 
   const error = t.throws(() => taskService.create(task))
-  t.deepEqual(error?.cause, { code: 'TASK_NOT_FOUND', phaseId: 123456 })
+  t.deepEqual(error?.cause, { code: 'PHASE_NOT_FOUND', phaseId: 123456 })
 })
 
 test('#markAsCompleted', async (t) => {
