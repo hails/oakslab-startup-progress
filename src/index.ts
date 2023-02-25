@@ -2,10 +2,15 @@ import type { PinoLoggerOptions } from 'fastify/types/logger'
 import { buildFastify } from './app'
 import * as Sentry from '@sentry/node'
 import '@sentry/tracing'
+import { ProfilingIntegration } from '@sentry/profiling-node'
 
 Sentry.init({
   dsn: process.env['SENTRY_DSN'] as string,
-  tracesSampleRate: 1.0
+  tracesSampleRate: 1.0,
+  profilesSampleRate: 1.0,
+  integrations: [
+    new ProfilingIntegration()
+  ]
 })
 
 const start = async () => {
