@@ -21,12 +21,14 @@
     "typescript": "^4.9.5"
   },
   "dependencies": {
+    "@sentry/node": "^7.38.0",
+    "@sentry/tracing": "^7.38.0",
     "@tsconfig/node-lts-strictest": "^18.12.1",
-    "ts-node": "^10.9.1",
-    "tsconfig-paths": "^4.1.2",
     "fastify": "^4.12.0",
     "graphql": "^16.6.0",
     "mercurius": "^12.0.0",
+    "ts-node": "^10.9.1",
+    "tsconfig-paths": "^4.1.2",
     "undici": "^5.19.1"
   },
   "ava": {
