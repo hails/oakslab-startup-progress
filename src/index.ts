@@ -1,5 +1,12 @@
 import type { PinoLoggerOptions } from 'fastify/types/logger'
 import { buildFastify } from './app'
+import * as Sentry from '@sentry/node'
+import '@sentry/tracing'
+
+Sentry.init({
+  dsn: process.env['SENTRY_DSN'] as string,
+  tracesSampleRate: 1.0
+})
 
 const start = async () => {
   try {
