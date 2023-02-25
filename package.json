@@ -22,6 +22,7 @@
   },
   "dependencies": {
     "@sentry/node": "^7.38.0",
+    "@sentry/profiling-node": "^0.2.2",
     "@sentry/tracing": "^7.38.0",
     "@tsconfig/node-lts-strictest": "^18.12.1",
     "fastify": "^4.12.0",
