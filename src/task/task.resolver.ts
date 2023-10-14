@@ -34,3 +34,8 @@ export const markTaskAsCompleted = (_: any, { taskId }: { taskId: number }) => {
   const taskService = new TaskService(state)
   return taskService.markAsCompleted(taskId)
 }
+
+export const markTaskAsOpen = (_: any, { taskId }: { taskId: number }) => {
+  const taskService = new TaskService(state)
+  return taskService.markAsOpen(taskId)
+}

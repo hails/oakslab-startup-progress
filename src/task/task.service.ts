@@ -41,6 +41,22 @@ export class TaskService {
     return true
   }
 
+  markAsOpen (id: number) {
+    const task = this.state.tasks.at(id)
+
+    if (task === null || task === undefined) {
+      throw new Error('Task not found', { cause: { code: 'TASK_NOT_FOUND', taskId: id } })
+    }
+
+    if (this.state.phases.at(task.phaseId)?.status === PhaseStatus.COMPLETED) {
+      this.state.phases[task.phaseId]!.status = PhaseStatus.OPEN
+    }
+
+    this.state.tasks.at(id)!.status = TaskStatus.OPEN
+
+    return true
+  }
+
   private tasksPreviousPhaseAreCompleted (currentPhaseId: number): boolean {
     if (currentPhaseId === 0) {
       return true
